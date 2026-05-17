@@ -177,47 +177,38 @@
     </footer>
 
     <!-- Include Modal HTML here as well in case they click Contact Us -->
+    <!-- Inquiry Modal (Converted to Interactive Chatbox) -->
     <div id="inquiry-modal" class="modal">
-        <div class="modal-content inquiry-container">
-            <span class="close-modal">&times;</span>
-            <div class="section-header">
-                <span class="subtitle">Get In Touch</span>
-                <h2>Property <span class="gold-text">Inquiry</span></h2>
-                <p>Register your interest for plots, shops, commercial spaces, or gated townships.</p>
+        <div class="modal-content chatbox-container">
+            <!-- Chat Header -->
+            <div class="chatbox-header">
+                <div class="chat-agent-info">
+                    <div class="chat-agent-avatar">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span class="online-status-dot"></span>
+                    </div>
+                    <div>
+                        <h4>Pradeep Kumar</h4>
+                        <p><i class="fa-solid fa-circle gold-text" style="font-size: 8px;"></i> Assistant Manager</p>
+                    </div>
+                </div>
+                <span class="close-modal">&times;</span>
             </div>
-            <form class="inquiry-form" id="property-inquiry-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="inquiry-name">Full Name</label>
-                        <input type="text" id="inquiry-name" required placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="inquiry-phone">Phone Number</label>
-                        <input type="tel" id="inquiry-phone" required placeholder="Your Phone Number">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="inquiry-email">Email Address</label>
-                        <input type="email" id="inquiry-email" required placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="inquiry-type">Property Type</label>
-                        <select id="inquiry-type" required>
-                            <option value="" disabled selected>Select Property Type</option>
-                            <option value="Plots">Plots</option>
-                            <option value="Shops">Shops</option>
-                            <option value="Commercial Plots">Commercial Plots</option>
-                            <option value="Gated Township">Gated Township</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group full-width">
-                    <label for="inquiry-requirements">Your Requirements</label>
-                    <textarea id="inquiry-requirements" rows="4" placeholder="Tell us what you are looking for..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary submit-btn">Submit Inquiry <i class="fa-solid fa-paper-plane"></i></button>
+            
+            <!-- Chat Messages Window -->
+            <div class="chatbox-messages" id="chatbox-messages">
+                <!-- Dynamically populated via JS -->
+            </div>
+            
+            <!-- Chat Quick Options (Chips) -->
+            <div class="chatbox-chips" id="chatbox-chips">
+                <!-- Dynamically populated via JS -->
+            </div>
+            
+            <!-- Chat Input Area -->
+            <form class="chatbox-input-area" id="chatbox-input-form">
+                <input type="text" id="chatbox-user-input" placeholder="Type your message here..." required autocomplete="off">
+                <button type="submit" class="chatbox-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
     </div>

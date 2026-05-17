@@ -147,31 +147,179 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     modal.classList.add('show');
+                    initChat();
                 });
             });
         }
     }
 
-    // --- Modal Logic ---
+    // --- Interactive Chatbox Widget Logic ---
     const modal = document.getElementById('inquiry-modal');
     const openBtns = document.querySelectorAll('.open-modal-btn');
     const closeBtn = document.querySelector('.close-modal');
+    
+    const chatMessages = document.getElementById('chatbox-messages');
+    const chatChips = document.getElementById('chatbox-chips');
+    const chatForm = document.getElementById('chatbox-input-form');
+    const chatInput = document.getElementById('chatbox-user-input');
+
+    let chatStep = 0;
+    let leadData = {
+        name: '',
+        phone: '',
+        email: '',
+        type: '',
+        requirements: ''
+    };
+
+    function appendMessage(sender, text, isHtml = false) {
+        if (!chatMessages) return;
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${sender}`;
+        if (isHtml) {
+            msgDiv.innerHTML = text;
+        } else {
+            msgDiv.textContent = text;
+        }
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showBotTyping(callback, delay = 800) {
+        setTimeout(callback, delay);
+    }
+
+    function initChat() {
+        if (!chatMessages) return;
+        chatMessages.innerHTML = '';
+        if (chatChips) chatChips.innerHTML = '';
+        if (chatInput) {
+            chatInput.value = '';
+            chatInput.disabled = false;
+            chatInput.placeholder = "Type your message here...";
+        }
+        chatStep = 0;
+        leadData = { name: '', phone: '', email: '', type: '', requirements: '' };
+
+        appendMessage('bot', 'Namaste! 🙏 Welcome to My Property Review.');
+        
+        showBotTyping(() => {
+            appendMessage('bot', "I'm Pradeep Kumar, your Property Assistant. How can I help you find your dream plot, commercial shop, or gated township today? Let's start with your Full Name.");
+        }, 1000);
+    }
 
     if (modal) {
         openBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 modal.classList.add('show');
+                initChat(); // Initialize chat every time it opens!
             });
         });
 
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('show');
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+            });
+        }
 
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.remove('show');
+            }
+        });
+    }
+
+    // Handle Quick Reply Chips
+    function renderChips(options) {
+        if (!chatChips) return;
+        chatChips.innerHTML = '';
+        options.forEach(opt => {
+            const chip = document.createElement('div');
+            chip.className = 'chat-chip';
+            chip.textContent = opt;
+            chip.addEventListener('click', () => {
+                submitUserResponse(opt);
+            });
+            chatChips.appendChild(chip);
+        });
+    }
+
+    function submitUserResponse(userInputText) {
+        if (!userInputText.trim()) return;
+        
+        // Append user response
+        appendMessage('user', userInputText);
+        
+        if (chatInput) chatInput.value = '';
+
+        // Process chatbot steps
+        if (chatStep === 0) {
+            leadData.name = userInputText;
+            chatStep = 1;
+            showBotTyping(() => {
+                appendMessage('bot', `Nice to meet you, ${leadData.name}! What is your Phone Number? (Our expert advisor will connect with you on this number).`);
+            });
+        }
+        else if (chatStep === 1) {
+            leadData.phone = userInputText;
+            chatStep = 2;
+            showBotTyping(() => {
+                appendMessage('bot', "Perfect! What Property Type are you looking for today?");
+                renderChips(['Plots', 'Shops', 'Commercial Plots', 'Gated Township', 'Other']);
+            });
+        }
+        else if (chatStep === 2) {
+            leadData.type = userInputText;
+            if (chatChips) chatChips.innerHTML = ''; // Hide chips
+            chatStep = 3;
+            showBotTyping(() => {
+                appendMessage('bot', "Great choice! Lastly, tell me a bit about your specific requirements or budget? (e.g. Near highway, 15 Lakh budget, 1000 sqft, etc.)");
+            });
+        }
+        else if (chatStep === 3) {
+            leadData.requirements = userInputText;
+            chatStep = 4;
+            
+            if (chatInput) {
+                chatInput.disabled = true;
+                chatInput.placeholder = "Chat compiled! Click below...";
+            }
+
+            showBotTyping(() => {
+                appendMessage('bot', `Thank you, ${leadData.name}! I have compiled your inquiry request successfully.`);
+                
+                showBotTyping(() => {
+                    // Format WhatsApp Message
+                    const whatsappNumber = "917737748056";
+                    const message = `*New Property Chat Inquiry*\n\n` +
+                                    `*Name:* ${leadData.name}\n` +
+                                    `*Phone:* ${leadData.phone}\n` +
+                                    `*Property Type:* ${leadData.type}\n` +
+                                    `*Requirements:* ${leadData.requirements}`;
+                    
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                    
+                    const ctaButtonHTML = `
+                        <div>
+                            <p style="margin-bottom: 8px;">Click the button below to instantly connect with me on WhatsApp and start chatting live! 💬🚀</p>
+                            <a href="${whatsappUrl}" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 0.6rem 1.2rem; font-size: 0.95rem; font-weight: 600; border-radius: 30px; margin-top: 5px;">
+                                <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Chat Live on WhatsApp
+                            </a>
+                        </div>
+                    `;
+                    appendMessage('bot', ctaButtonHTML, true);
+                }, 600);
+            });
+        }
+    }
+
+    if (chatForm) {
+        chatForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (chatInput) {
+                submitUserResponse(chatInput.value);
             }
         });
     }
@@ -243,7 +391,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const filtered = allProperties.filter(prop => {
                 // 1. Filter by Tab Action
                 if (actionType === 'commercial') {
-                    // Commercial match criteria: is it a plot, shop, or explicitly commercial?
                     const isCommercialType = prop.type === 'plot' || prop.title.toLowerCase().includes('commercial') || prop.type.toLowerCase().includes('shop');
                     if (!isCommercialType) return false;
                 } else {
@@ -366,29 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
-    // --- Inquiry Form Submission ---
-    const inquiryForm = document.getElementById('property-inquiry-form');
-    if(inquiryForm) {
-        inquiryForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('inquiry-name').value;
-            const phone = document.getElementById('inquiry-phone').value;
-            const email = document.getElementById('inquiry-email').value;
-            const type = document.getElementById('inquiry-type').value;
-            const requirements = document.getElementById('inquiry-requirements').value;
-            
-            const whatsappNumber = "917737748056";
-            const message = `*New Property Inquiry*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Property Type:* ${type}\n*Requirements:* ${requirements}`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-            inquiryForm.reset();
-            if(modal) modal.classList.remove('show');
-        });
-    }
 
     // --- Property Listing Form Submission ---
     const listingForm = document.getElementById('submit-listing-form');
