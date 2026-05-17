@@ -776,6 +776,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Collapsible Blog Article Logic ---
+    const readArticleBtns = document.querySelectorAll('.read-article-btn');
+    readArticleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const card = btn.closest('.blog-card');
+            const fullArticle = card.querySelector('.full-article');
+            
+            if (fullArticle) {
+                const isShowing = fullArticle.style.display === 'block';
+                if (isShowing) {
+                    fullArticle.style.display = 'none';
+                    btn.innerHTML = `Read Full Article <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>`;
+                } else {
+                    fullArticle.style.display = 'block';
+                    btn.innerHTML = `Close Article <i class="fa-solid fa-chevron-up" style="font-size: 0.75rem;"></i>`;
+                    
+                    // Smooth scroll to top of card when expanded
+                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    });
+
     // Initial load auth UI check
     updateAuthUI();
 });
