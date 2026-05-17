@@ -2,18 +2,18 @@
    VARIABLES & DESIGN SYSTEM
    ========================================= */
 :root {
-    /* Color Palette - Modern Luxury */
-    --bg-dark: #0f172a; /* Slate 900 */
-    --bg-darker: #020617; /* Slate 950 */
-    --bg-card: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
+    /* Color Palette - Modern Luxury Light Mode */
+    --bg-dark: #faf9f6; /* Slate 50 / Warm luxury white */
+    --bg-darker: #f3f0e7; /* Slate 100 / Soft Alabaster contrast background */
+    --bg-card: #ffffff; /* Premium solid white card background */
     
-    --accent-gold: #d4af37;
-    --accent-gold-hover: #c5a059;
-    --accent-gold-light: rgba(212, 175, 55, 0.1);
+    --accent-gold: #b89733; /* Elegant Gold with high contrast readability on white */
+    --accent-gold-hover: #a18228;
+    --accent-gold-light: rgba(184, 151, 51, 0.08);
     
-    --text-main: #f8fafc; /* Slate 50 */
-    --text-muted: #94a3b8; /* Slate 400 */
-    --text-dark: #1e293b; /* For light mode elements if needed */
+    --text-main: #1c1917; /* Slate 900 / Premium charcoal text */
+    --text-muted: #6b6661; /* Slate 500 / Warm grey for minor texts */
+    --text-dark: #ffffff; /* White text for buttons or dark highlights */
     
     /* Typography */
     --font-heading: 'Playfair Display', serif;
@@ -26,9 +26,9 @@
     --border-radius-lg: 24px;
     
     /* Effects */
-    --glass-bg: rgba(15, 23, 42, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --glass-bg: rgba(255, 255, 255, 0.85); /* Milky-white glassmorphism */
+    --glass-border: rgba(184, 151, 51, 0.25); /* Soft golden border */
+    --glass-shadow: 0 8px 32px 0 rgba(184, 151, 51, 0.06); /* Elegant gold-tinged glow shadow */
     
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -174,7 +174,7 @@ img {
 }
 
 .navbar.scrolled {
-    background: rgba(2, 6, 23, 0.85); /* bg-darker with opacity */
+    background: rgba(250, 249, 246, 0.9); /* bg-dark with opacity */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 1rem 0;
@@ -268,7 +268,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.4) 0%, rgba(2, 6, 23, 0.8) 100%);
+    background: linear-gradient(to bottom, rgba(250, 249, 246, 0.3) 0%, rgba(250, 249, 246, 0.85) 100%);
     z-index: -1;
 }
 
@@ -282,7 +282,7 @@ img {
 .hero h1 {
     font-size: 4.5rem;
     margin-bottom: 1rem;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    text-shadow: none;
 }
 
 .hero p {
@@ -311,7 +311,7 @@ img {
     display: flex;
     gap: 1rem;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--glass-border);
     padding-bottom: 1rem;
 }
 
@@ -354,7 +354,7 @@ img {
     flex: 1;
     display: flex;
     align-items: center;
-    background: rgba(255,255,255,0.05);
+    background: #ffffff;
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius-sm);
     padding: 0.8rem 1rem;
@@ -364,7 +364,8 @@ img {
 
 .input-group:focus-within {
     border-color: var(--accent-gold);
-    background: rgba(255,255,255,0.1);
+    background: #ffffff;
+    box-shadow: 0 0 12px rgba(184, 151, 51, 0.15);
 }
 
 .input-group i {
@@ -492,7 +493,7 @@ img {
     content: '';
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(15,23,42,1) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, transparent 60%);
 }
 
 .property-card:hover .card-img {
@@ -573,7 +574,7 @@ img {
 
 .card-footer {
     padding: 1rem 1.5rem;
-    background: rgba(0,0,0,0.2);
+    background: rgba(184, 151, 51, 0.02);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -693,7 +694,7 @@ img {
 .service-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-gold);
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(184, 151, 51, 0.03);
 }
 
 .icon-wrapper {
@@ -846,7 +847,7 @@ img {
 .form-group input,
 .form-group select,
 .form-group textarea {
-    background: rgba(255, 255, 255, 0.05);
+    background: #ffffff;
     border: 1px solid var(--glass-border);
     border-radius: var(--border-radius-sm);
     padding: 0.8rem 1rem;
@@ -861,7 +862,8 @@ img {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--accent-gold);
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(184, 151, 51, 0.15);
 }
 
 .form-group select option {
