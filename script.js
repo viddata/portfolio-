@@ -171,4 +171,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Property Listing Form Submission ---
+    const listingForm = document.getElementById('submit-listing-form');
+    if(listingForm) {
+        listingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get values
+            const userType = document.getElementById('list-user-type').value;
+            const actionType = document.getElementById('list-action-type').value;
+            const propType = document.getElementById('list-prop-type').value;
+            const price = document.getElementById('list-price').value;
+            const location = document.getElementById('list-location').value;
+            const description = document.getElementById('list-description').value;
+            const name = document.getElementById('list-name').value;
+            const phone = document.getElementById('list-phone').value;
+            const email = document.getElementById('list-email').value;
+            
+            // Format WhatsApp Message
+            const whatsappNumber = "917737748056";
+            const message = `*New Property Listing Request*\n\n` +
+                            `*Listing Party:* ${userType}\n` +
+                            `*Purpose:* For ${actionType}\n` +
+                            `*Property Type:* ${propType}\n` +
+                            `*Expected Price/Rent:* ₹${price}\n` +
+                            `*Location:* ${location}\n` +
+                            `*Description:* ${description}\n\n` +
+                            `*Contact Details:*\n` +
+                            `- Name: ${name}\n` +
+                            `- Phone: ${phone}\n` +
+                            `- Email: ${email}`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            listingForm.reset();
+        });
+    }
 });

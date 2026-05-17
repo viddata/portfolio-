@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Property | My Property Review</title>
+    <meta name="description" content="List your property with us. We connect brokers, builders, and sellers with premium buyers and renters.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="listing-page">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-city gold-text"></i> My Property <span class="light-text">Review</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#properties">Properties</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="list-property.html" class="gold-text active" style="font-weight: 600;"><i class="fa-solid fa-plus"></i> List Property</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-outline open-modal-btn">Contact Us</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-content reveal">
+            <span class="subtitle">Join Our Network</span>
+            <h1>List Your <span class="gold-text">Property</span></h1>
+            <p>Connect with high-value buyers and tenants across the globe.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section-header reveal">
+            <span class="subtitle">Listing Plans</span>
+            <h2>Choose Your <span class="gold-text">Package</span></h2>
+            <p>Select the plan that best fits your needs, whether you're an individual owner, a broker, or a builder.</p>
+        </div>
+        <div class="pricing-grid">
+            <!-- Basic Plan -->
+            <div class="pricing-card reveal">
+                <h3>Individual / Owner</h3>
+                <div class="price">₹999<span>/listing</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check gold-text"></i> 1 Active Listing</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Standard Visibility</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Up to 5 High-Res Photos</li>
+                    <li><i class="fa-solid fa-xmark text-muted"></i> Featured Tag</li>
+                    <li><i class="fa-solid fa-xmark text-muted"></i> Dedicated Support</li>
+                </ul>
+                <a href="#list-form-section" class="btn btn-outline">Select Plan</a>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="pricing-card premium reveal delay-1">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Broker Plan</h3>
+                <div class="price">₹4,999<span>/month</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check gold-text"></i> Up to 10 Active Listings</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Priority Visibility</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Up to 15 Photos per Listing</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Featured Tag Included</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> WhatsApp Support</li>
+                </ul>
+                <a href="#list-form-section" class="btn btn-primary">Select Plan</a>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card reveal delay-2">
+                <h3>Builder / Project</h3>
+                <div class="price">Custom<span>/project</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check gold-text"></i> Full Project Showcase</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Maximum Visibility</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Unlimited Photos & Videos</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Premium Homepage Placement</li>
+                    <li><i class="fa-solid fa-check gold-text"></i> Dedicated Account Manager</li>
+                </ul>
+                <a href="#list-form-section" class="btn btn-outline">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Listing Form Section -->
+    <section class="listing-form-section" id="list-form-section">
+        <div class="inquiry-container reveal">
+            <div class="section-header">
+                <h2>Submit Your <span class="gold-text">Listing</span></h2>
+                <p>Fill out the details below. We will review your submission and contact you for payment processing.</p>
+            </div>
+            
+            <form class="inquiry-form" id="submit-listing-form">
+                
+                <!-- Section 1: User & Listing Type -->
+                <h3 class="form-section-title">1. Basic Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="list-user-type">I am a...</label>
+                        <select id="list-user-type" required>
+                            <option value="" disabled selected>Select Role</option>
+                            <option value="Owner">Property Owner</option>
+                            <option value="Broker">Real Estate Broker</option>
+                            <option value="Builder">Builder / Developer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="list-action-type">I want to...</label>
+                        <select id="list-action-type" required>
+                            <option value="" disabled selected>Select Action</option>
+                            <option value="Sell">Sell Property</option>
+                            <option value="Rent">Rent Out Property</option>
+                            <option value="Lease">Lease Property</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section 2: Property Details -->
+                <h3 class="form-section-title">2. Property Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="list-prop-type">Property Type</label>
+                        <select id="list-prop-type" required>
+                            <option value="" disabled selected>Select Property Type</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Villa">Villa / House</option>
+                            <option value="Plot">Plot / Land</option>
+                            <option value="Commercial Shop">Commercial Shop</option>
+                            <option value="Commercial Plot">Commercial Plot</option>
+                            <option value="Gated Township">Gated Township</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="list-price">Expected Price / Rent (₹)</label>
+                        <input type="text" id="list-price" required placeholder="e.g. 50,00,000">
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="list-location">Exact Location / Address</label>
+                    <input type="text" id="list-location" required placeholder="City, Locality, Area">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="list-description">Property Description</label>
+                    <textarea id="list-description" rows="4" placeholder="Highlight key features, amenities, nearby landmarks, etc." required></textarea>
+                </div>
+
+                <!-- Section 3: Contact Info -->
+                <h3 class="form-section-title">3. Your Contact Details</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="list-name">Full Name</label>
+                        <input type="text" id="list-name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="list-phone">Phone Number</label>
+                        <input type="tel" id="list-phone" required placeholder="Your Mobile Number">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="list-email">Email Address</label>
+                    <input type="email" id="list-email" required placeholder="Your Email">
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">Submit Listing Request <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top reveal">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-city gold-text"></i> My Property <span class="light-text">Review</span>
+                </a>
+                <p>Your trusted partner in discovering, acquiring, and managing premium real estate worldwide.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/propertypradeep?igsh=MXdpMXpzMTRkcWJ5Zw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1DDy9V1TkH/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#properties">Properties</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-location-dot gold-text"></i> Shree Kailashpuri, Balita Road</p>
+                <p><i class="fa-solid fa-phone gold-text"></i> 7737748056</p>
+                <p><a href="https://wa.me/917737748056" target="_blank" style="color: inherit; text-decoration: none;"><i class="fa-brands fa-whatsapp gold-text"></i> 7737748056</a></p>
+                <p><i class="fa-solid fa-envelope gold-text"></i> contact@mypropertyreview.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Elite Advisory. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Include Modal HTML here as well in case they click Contact Us -->
+    <div id="inquiry-modal" class="modal">
+        <div class="modal-content inquiry-container">
+            <span class="close-modal">&times;</span>
+            <div class="section-header">
+                <span class="subtitle">Get In Touch</span>
+                <h2>Property <span class="gold-text">Inquiry</span></h2>
+                <p>Register your interest for plots, shops, commercial spaces, or gated townships.</p>
+            </div>
+            <form class="inquiry-form" id="property-inquiry-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiry-name">Full Name</label>
+                        <input type="text" id="inquiry-name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-phone">Phone Number</label>
+                        <input type="tel" id="inquiry-phone" required placeholder="Your Phone Number">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiry-email">Email Address</label>
+                        <input type="email" id="inquiry-email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-type">Property Type</label>
+                        <select id="inquiry-type" required>
+                            <option value="" disabled selected>Select Property Type</option>
+                            <option value="Plots">Plots</option>
+                            <option value="Shops">Shops</option>
+                            <option value="Commercial Plots">Commercial Plots</option>
+                            <option value="Gated Township">Gated Township</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="inquiry-requirements">Your Requirements</label>
+                    <textarea id="inquiry-requirements" rows="4" placeholder="Tell us what you are looking for..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Submit Inquiry <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
