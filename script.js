@@ -113,6 +113,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Modal Logic ---
+    const modal = document.getElementById('inquiry-modal');
+    const openBtns = document.querySelectorAll('.open-modal-btn');
+    const closeBtn = document.querySelector('.close-modal');
+
+    if (modal) {
+        // Open modal
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('show');
+            });
+        });
+
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+
+        // Close when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    }
+
     // --- Inquiry Form Submission ---
     const inquiryForm = document.getElementById('property-inquiry-form');
     if(inquiryForm) {
@@ -128,6 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Reset form
             inquiryForm.reset();
+            
+            // Close modal
+            if(modal) {
+                modal.classList.remove('show');
+            }
         });
     }
 });
