@@ -688,6 +688,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Google Login Simulated Flow
+    const googleLoginBtn = document.getElementById('google-login-btn');
+    if (googleLoginBtn) {
+        googleLoginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Simulating Google Sign-in selector
+            const googleUsers = [
+                { name: 'Pradeep Kumar', email: 'pradeep.kumar.advisor@gmail.com', role: 'user' },
+                { name: 'Admin Advisor', email: 'admin.myproperty@gmail.com', role: 'admin' }
+            ];
+            
+            // Log in as Pradeep Kumar by default for a flawless premium demo!
+            const chosenUser = googleUsers[0];
+            
+            // Subtle transition loading state to feel extremely real!
+            googleLoginBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin" style="color: #b89733;"></i> Connecting Google...`;
+            googleLoginBtn.disabled = true;
+            
+            setTimeout(() => {
+                localStorage.setItem('logged_in_user', JSON.stringify(chosenUser));
+                updateAuthUI();
+                if (signinModal) signinModal.classList.remove('show');
+                
+                // Restore button state
+                googleLoginBtn.innerHTML = `<i class="fa-brands fa-google" style="color: #4285F4; font-size: 1.15rem;"></i> Continue with Google`;
+                googleLoginBtn.disabled = false;
+            }, 1000);
+        });
+    }
+
     // Update Auth State UI in Navbar
     function updateAuthUI() {
         const authNavItem = document.getElementById('auth-nav-item');

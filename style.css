@@ -1588,3 +1588,10 @@ img {
     background: var(--bg-darker);
     color: var(--accent-gold) !important;
 }
+
+/* Continue with Google button styling */
+.google-btn:hover {
+    background: var(--bg-darker) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--accent-gold) !important;
+}
