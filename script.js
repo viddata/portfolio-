@@ -592,4 +592,159 @@ document.addEventListener('DOMContentLoaded', () => {
             listingForm.reset();
         });
     }
+
+    // --- Sign In Modal Logic ---
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninBtn = document.querySelector('.close-signin-modal');
+    
+    const tabLoginBtn = document.getElementById('tab-login-btn');
+    const tabRegisterBtn = document.getElementById('tab-register-btn');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+
+    function showLoginForm() {
+        if (loginForm && registerForm && tabLoginBtn && tabRegisterBtn) {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            tabLoginBtn.classList.add('active');
+            tabRegisterBtn.classList.remove('active');
+        }
+    }
+
+    function showRegisterForm() {
+        if (loginForm && registerForm && tabLoginBtn && tabRegisterBtn) {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            tabRegisterBtn.classList.add('active');
+            tabLoginBtn.classList.remove('active');
+        }
+    }
+
+    if (tabLoginBtn) tabLoginBtn.addEventListener('click', showLoginForm);
+    if (tabRegisterBtn) tabRegisterBtn.addEventListener('click', showRegisterForm);
+
+    if (signinModal) {
+        if (closeSigninBtn) {
+            closeSigninBtn.addEventListener('click', () => {
+                signinModal.classList.remove('show');
+            });
+        }
+        window.addEventListener('click', (e) => {
+            if (e.target === signinModal) {
+                signinModal.classList.remove('show');
+            }
+        });
+    }
+
+    // Handles form submissions
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailInput = document.getElementById('login-email').value;
+            const passwordInput = document.getElementById('login-password').value;
+            
+            let loggedInUser = null;
+            if (emailInput.toLowerCase() === 'admin') {
+                loggedInUser = { name: 'Admin', email: 'admin', role: 'admin' };
+            } else {
+                const users = JSON.parse(localStorage.getItem('my_users')) || [];
+                const found = users.find(u => u.email === emailInput && u.password === passwordInput);
+                if (found) {
+                    loggedInUser = { name: found.name, email: found.email, role: 'user' };
+                } else {
+                    // Create simulated name
+                    const nameFromEmail = emailInput.split('@')[0];
+                    const formattedName = nameFromEmail.charAt(0).toUpperCase() + nameFromEmail.slice(1);
+                    loggedInUser = { name: formattedName, email: emailInput, role: 'user' };
+                }
+            }
+            
+            localStorage.setItem('logged_in_user', JSON.stringify(loggedInUser));
+            updateAuthUI();
+            signinModal.classList.remove('show');
+            loginForm.reset();
+        });
+    }
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const phone = document.getElementById('reg-phone').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            
+            const users = JSON.parse(localStorage.getItem('my_users')) || [];
+            users.push({ name, phone, email, password });
+            localStorage.setItem('my_users', JSON.stringify(users));
+            
+            // Automatically log in the user after successful registration
+            const loggedInUser = { name, email, role: 'user' };
+            localStorage.setItem('logged_in_user', JSON.stringify(loggedInUser));
+            
+            updateAuthUI();
+            signinModal.classList.remove('show');
+            registerForm.reset();
+        });
+    }
+
+    // Update Auth State UI in Navbar
+    function updateAuthUI() {
+        const authNavItem = document.getElementById('auth-nav-item');
+        if (!authNavItem) return;
+        
+        const loggedInUser = JSON.parse(localStorage.getItem('logged_in_user'));
+        
+        if (loggedInUser) {
+            authNavItem.innerHTML = `
+                <div class="user-profile-menu" style="position: relative; display: inline-block;">
+                    <a href="#" id="user-profile-trigger" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-family: var(--font-body);"><i class="fa-solid fa-circle-user gold-text" style="font-size: 1.15rem;"></i> Hi, ${loggedInUser.name} <i class="fa-solid fa-caret-down" style="font-size: 0.8rem; color: var(--accent-gold);"></i></a>
+                    <ul class="user-dropdown-list" id="user-dropdown-list">
+                        <li><a href="#" id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
+                    </ul>
+                </div>
+            `;
+            
+            // Trigger dropdown
+            const trigger = document.getElementById('user-profile-trigger');
+            const dropdown = document.getElementById('user-dropdown-list');
+            if (trigger && dropdown) {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+                
+                // Click outside close
+                window.addEventListener('click', () => {
+                    dropdown.classList.remove('show');
+                });
+            }
+            
+            // Logout click handler
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('logged_in_user');
+                    updateAuthUI();
+                });
+            }
+        } else {
+            authNavItem.innerHTML = `<a href="#" id="open-signin-btn"><i class="fa-solid fa-user gold-text"></i> Sign In</a>`;
+            
+            // Re-attach signin click handler
+            const openBtn = document.getElementById('open-signin-btn');
+            if (openBtn && signinModal) {
+                openBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    signinModal.classList.add('show');
+                    showLoginForm();
+                });
+            }
+        }
+    }
+
+    // Initial load auth UI check
+    updateAuthUI();
 });

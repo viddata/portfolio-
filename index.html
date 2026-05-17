@@ -26,6 +26,7 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="list-property.html" class="gold-text" style="font-weight: 600;"><i class="fa-solid fa-plus"></i> List Property</a></li>
+                <li id="auth-nav-item"><a href="#" id="open-signin-btn"><i class="fa-solid fa-user gold-text"></i> Sign In</a></li>
             </ul>
             <a href="#" class="btn btn-outline open-modal-btn">Contact Us</a>
             <div class="menu-toggle" id="mobile-menu">
@@ -314,6 +315,66 @@
             <form class="chatbox-input-area" id="chatbox-input-form">
                 <input type="text" id="chatbox-user-input" placeholder="Type your message here..." required autocomplete="off">
                 <button type="submit" class="chatbox-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div id="signin-modal" class="modal">
+        <div class="modal-content signin-container">
+            <span class="close-signin-modal">&times;</span>
+            
+            <div class="signin-tabs">
+                <button class="signin-tab-btn active" id="tab-login-btn">Sign In</button>
+                <button class="signin-tab-btn" id="tab-register-btn">Register</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form class="signin-form active" id="login-form">
+                <div class="section-header" style="margin-bottom: 1.5rem; text-align: center;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Welcome <span class="gold-text">Back</span></h2>
+                    <p style="font-size: 0.9rem;">Access your advisor dashboard and saved listings.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                        <label for="login-email" style="font-size: 0.85rem; font-weight: 500; color: var(--text-main);">Email / Username</label>
+                        <input type="text" id="login-email" required placeholder="Enter username or 'admin'" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); outline: none; background: var(--bg-dark);">
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                        <label for="login-password" style="font-size: 0.85rem; font-weight: 500; color: var(--text-main);">Password</label>
+                        <input type="password" id="login-password" required placeholder="Password" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); outline: none; background: var(--bg-dark);">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem; font-weight: 600; margin-top: 0.5rem;">Sign In <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+                </div>
+            </form>
+            
+            <!-- Register Form -->
+            <form class="signin-form" id="register-form" style="display: none;">
+                <div class="section-header" style="margin-bottom: 1.5rem; text-align: center;">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Create <span class="gold-text">Account</span></h2>
+                    <p style="font-size: 0.9rem;">Join My Property Review to list properties.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                            <label for="reg-name" style="font-size: 0.85rem; font-weight: 500;">Full Name</label>
+                            <input type="text" id="reg-name" required placeholder="Your Name" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); outline: none; background: var(--bg-dark);">
+                        </div>
+                        <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                            <label for="reg-phone" style="font-size: 0.85rem; font-weight: 500;">Phone</label>
+                            <input type="tel" id="reg-phone" required placeholder="Phone" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); outline: none; background: var(--bg-dark);">
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                        <label for="reg-email" style="font-size: 0.85rem; font-weight: 500;">Email</label>
+                        <input type="email" id="reg-email" required placeholder="Email Address" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); outline: none; background: var(--bg-dark);">
+                    </div>
+                    <div class="form-group" style="display: flex; flex-direction: column; gap: 0.4rem; text-align: left;">
+                        <label for="reg-password" style="font-size: 0.85rem; font-weight: 500;">Password</label>
+                        <input type="password" id="reg-password" required placeholder="Create Password" style="padding: 0.8rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); outline: none; background: var(--bg-dark);">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.8rem; font-weight: 600; margin-top: 0.5rem;">Create Account <i class="fa-solid fa-user-plus"></i></button>
+                </div>
             </form>
         </div>
     </div>
