@@ -112,4 +112,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // --- Inquiry Form Submission ---
+    const inquiryForm = document.getElementById('property-inquiry-form');
+    if(inquiryForm) {
+        inquiryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get values
+            const name = document.getElementById('inquiry-name').value;
+            const type = document.getElementById('inquiry-type').value;
+            
+            // Show alert
+            alert(`Thank you, ${name}! Your inquiry for ${type} has been received. Our team will contact you shortly.`);
+            
+            // Reset form
+            inquiryForm.reset();
+        });
+    }
 });
