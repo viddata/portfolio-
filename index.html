@@ -53,11 +53,11 @@
                 <div class="search-form">
                     <div class="input-group">
                         <i class="fa-solid fa-location-dot"></i>
-                        <input type="text" placeholder="Enter City, Locality, or Project">
+                        <input type="text" id="search-location" placeholder="Enter City, Locality, or Project">
                     </div>
                     <div class="input-group select-group">
                         <i class="fa-solid fa-house"></i>
-                        <select>
+                        <select id="search-type">
                             <option value="">Property Type</option>
                             <option value="apartment">Apartment</option>
                             <option value="villa">Villa</option>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="input-group select-group">
                         <i class="fa-solid fa-tag"></i>
-                        <select>
+                        <select id="search-budget">
                             <option value="">Budget</option>
                             <option value="1">Under ₹10 Lakh</option>
                             <option value="2">₹10 Lakh - ₹20 Lakh</option>
@@ -75,7 +75,7 @@
                             <option value="5">₹75 Lakh+</option>
                         </select>
                     </div>
-                    <button class="btn btn-primary search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+                    <button class="btn btn-primary search-btn" id="filter-search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
             <p>Explore our exclusive hand-picked real estate listings.</p>
         </div>
         
-        <div class="properties-grid">
+        <div class="properties-grid" id="properties-grid">
             <!-- Property Card 1 -->
             <div class="property-card reveal">
                 <div class="card-img" style="background-image: url('file:///C:/Users/Lenovo/.gemini/antigravity/brain/c138949b-e438-4219-856e-e52e96559c38/villa_exterior_1779000935762.png');">
