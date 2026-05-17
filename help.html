@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support | My Property Review</title>
+    <meta name="description" content="Help center and FAQs for My Property Review. Learn how to list, buy, or rent luxury properties.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="listing-page">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-city gold-text"></i> My Property <span class="light-text">Review</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#properties">Properties</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="list-property.html" class="gold-text" style="font-weight: 600;"><i class="fa-solid fa-plus"></i> List Property</a></li>
+            </ul>
+            <a href="index.html#contact" class="btn btn-outline open-modal-btn">Contact Us</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-content reveal">
+            <span class="subtitle">Support Center</span>
+            <h1>Help & <span class="gold-text">Support</span></h1>
+            <p>Find answers to frequently asked questions or contact our dedicated support team directly.</p>
+        </div>
+    </section>
+
+    <!-- Support Categories / FAQ Section -->
+    <section class="pricing-section">
+        <div class="section-header reveal">
+            <span class="subtitle">FAQs</span>
+            <h2>Frequently Asked <span class="gold-text">Questions</span></h2>
+            <p>Quick answers to common questions about listing, selling, and renting properties on our platform.</p>
+        </div>
+
+        <div class="pricing-grid" style="grid-template-columns: 1fr 1fr; margin-top: 3rem;">
+            <!-- FAQ Card 1 -->
+            <div class="pricing-card reveal" style="text-align: left; padding: 2.5rem; justify-content: flex-start;">
+                <h3 style="font-size: 1.25rem; color: var(--accent-gold); margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-circle-question"></i> How do I list my property?
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    To list a property, click on the <strong class="gold-text">List Property</strong> button in the top right navbar. Choose a pricing plan that fits your requirements (Owner, Broker, or Builder plan) and fill out the property listing request form. Once submitted, it will directly request approval on WhatsApp.
+                </p>
+            </div>
+
+            <!-- FAQ Card 2 -->
+            <div class="pricing-card reveal delay-1" style="text-align: left; padding: 2.5rem; justify-content: flex-start;">
+                <h3 style="font-size: 1.25rem; color: var(--accent-gold); margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-circle-question"></i> Are there any listing charges?
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    Yes, we have custom pricing options tailored to provide max exposure: 
+                    - Individual Owners: ₹999 per listing.
+                    - Brokers: ₹4,999 per month for up to 10 active listings.
+                    - Builders: Custom project packaging.
+                </p>
+            </div>
+
+            <!-- FAQ Card 3 -->
+            <div class="pricing-card reveal delay-2" style="text-align: left; padding: 2.5rem; justify-content: flex-start;">
+                <h3 style="font-size: 1.25rem; color: var(--accent-gold); margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-circle-question"></i> How do I pay my listing charges?
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    Once you submit your property request via our form, our team will review the details and reach out to you directly on WhatsApp. We will share a secure UPI/Payment QR code or bank transfer details to process your payment quickly and set your listing live.
+                </p>
+            </div>
+
+            <!-- FAQ Card 4 -->
+            <div class="pricing-card reveal delay-3" style="text-align: left; padding: 2.5rem; justify-content: flex-start;">
+                <h3 style="font-size: 1.25rem; color: var(--accent-gold); margin-bottom: 0.8rem;">
+                    <i class="fa-solid fa-circle-question"></i> How will buyers contact me?
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    When buyers submit inquiries on our portal for your listed property, their requests are automatically forwarded to you. Premium plans feature dedicated direct buttons (like direct WhatsApp connect) for interested clients to reach out immediately.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Contact Channels -->
+    <section class="listing-form-section" style="background: var(--bg-darker); padding: 5rem 2rem;">
+        <div class="inquiry-container reveal" style="max-width: 900px;">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <span class="subtitle">Still need help?</span>
+                <h2>Contact <span class="gold-text">Support Team</span></h2>
+                <p>If you have any other questions, reach out to us via any of our active communication channels.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; text-align: center;">
+                
+                <!-- Channel 1: WhatsApp -->
+                <div class="pricing-card" style="padding: 2rem; border-color: rgba(184, 151, 51, 0.2); justify-content: center; align-items: center;">
+                    <div style="font-size: 3rem; color: #25d366; margin-bottom: 1rem;">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h4>WhatsApp Support</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.5rem;">Instantly chat with our support manager.</p>
+                    <a href="https://wa.me/917737748056" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Chat Now</a>
+                </div>
+
+                <!-- Channel 2: Phone call -->
+                <div class="pricing-card" style="padding: 2rem; border-color: rgba(184, 151, 51, 0.2); justify-content: center; align-items: center;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h4>Phone Support</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.5rem;">Call us directly for immediate query resolution.</p>
+                    <a href="tel:7737748056" class="btn btn-outline" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Call Support</a>
+                </div>
+
+                <!-- Channel 3: Inquiry Modal Trigger -->
+                <div class="pricing-card" style="padding: 2rem; border-color: rgba(184, 151, 51, 0.2); justify-content: center; align-items: center;">
+                    <div style="font-size: 3rem; color: #3b82f6; margin-bottom: 1rem;">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <h4>Support Form</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.5rem 0 1.5rem;">Submit an official support query on the portal.</p>
+                    <a href="#" class="btn btn-outline open-modal-btn" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Submit Ticket</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top reveal">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-city gold-text"></i> My Property <span class="light-text">Review</span>
+                </a>
+                <p>Your trusted partner in discovering, acquiring, and managing premium real estate worldwide.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/propertypradeep?igsh=MXdpMXpzMTRkcWJ5Zw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/share/1DDy9V1TkH/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#properties">Properties</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-location-dot gold-text"></i> Shree Kailashpuri, Balita Road</p>
+                <p><i class="fa-solid fa-phone gold-text"></i> 7737748056</p>
+                <p><i class="fa-brands fa-whatsapp gold-text"></i> <a href="https://wa.me/917737748056" target="_blank" style="color: inherit; text-decoration: none;">7737748056</a></p>
+                <p><i class="fa-solid fa-envelope gold-text"></i> <a href="help.html" style="color: inherit; text-decoration: none;">contact@mypropertyreview.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Elite Advisory. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Include Modal HTML here as well in case they click Contact Us -->
+    <div id="inquiry-modal" class="modal">
+        <div class="modal-content inquiry-container">
+            <span class="close-modal">&times;</span>
+            <div class="section-header">
+                <span class="subtitle">Get In Touch</span>
+                <h2>Property <span class="gold-text">Inquiry</span></h2>
+                <p>Register your interest for plots, shops, commercial spaces, or gated townships.</p>
+            </div>
+            <form class="inquiry-form" id="property-inquiry-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiry-name">Full Name</label>
+                        <input type="text" id="inquiry-name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-phone">Phone Number</label>
+                        <input type="tel" id="inquiry-phone" required placeholder="Your Phone Number">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inquiry-email">Email Address</label>
+                        <input type="email" id="inquiry-email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inquiry-type">Property Type</label>
+                        <select id="inquiry-type" required>
+                            <option value="" disabled selected>Select Property Type</option>
+                            <option value="Plots">Plots</option>
+                            <option value="Shops">Shops</option>
+                            <option value="Commercial Plots">Commercial Plots</option>
+                            <option value="Gated Township">Gated Township</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="inquiry-requirements">Your Requirements</label>
+                    <textarea id="inquiry-requirements" rows="4" placeholder="Tell us what you are looking for..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary submit-btn">Submit Inquiry <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
