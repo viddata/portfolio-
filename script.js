@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             location: "Kunhari, Kota",
             price: 3500000, // ₹35 Lakh (35,00,000)
             priceDisplay: "₹35 Lakh",
-            type: "apartment", 
+            type: "commercial", 
             action: "buy",
             beds: 0,
             baths: 1,
@@ -79,8 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // Initialize localStorage if properties don't exist
-    if (!localStorage.getItem('my_properties')) {
+    // Initialize localStorage if properties don't exist or need updating to include commercial
+    const storedProps = localStorage.getItem('my_properties');
+    if (!storedProps || !storedProps.includes('"type":"commercial"')) {
         localStorage.setItem('my_properties', JSON.stringify(defaultProperties));
     }
 
@@ -546,6 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let typeLower = propType.toLowerCase();
             if (typeLower.includes('plot')) typeLower = 'plot';
+            else if (typeLower.includes('commercial') || typeLower.includes('shop') || typeLower.includes('office')) typeLower = 'commercial';
             else if (typeLower.includes('villa') || typeLower.includes('house')) typeLower = 'villa';
             else typeLower = 'apartment';
 
