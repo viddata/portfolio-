@@ -800,6 +800,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Sleek Scroll Progress Bar Indicator ---
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        if (height > 0) {
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) {
+                progressBar.style.width = scrolled + '%';
+            }
+        }
+    });
+
     // Initial load auth UI check
     updateAuthUI();
 });
