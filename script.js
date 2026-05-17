@@ -148,10 +148,19 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Get values
             const name = document.getElementById('inquiry-name').value;
+            const phone = document.getElementById('inquiry-phone').value;
+            const email = document.getElementById('inquiry-email').value;
             const type = document.getElementById('inquiry-type').value;
+            const requirements = document.getElementById('inquiry-requirements').value;
             
-            // Show alert
-            alert(`Thank you, ${name}! Your inquiry for ${type} has been received. Our team will contact you shortly.`);
+            // Format WhatsApp Message
+            const whatsappNumber = "917737748056";
+            const message = `*New Property Inquiry*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Email:* ${email}\n*Property Type:* ${type}\n*Requirements:* ${requirements}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp in new tab
+            window.open(whatsappUrl, '_blank');
             
             // Reset form
             inquiryForm.reset();
