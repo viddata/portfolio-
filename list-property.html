@@ -24,14 +24,59 @@
                 <i class="fa-solid fa-city gold-text"></i> My Property <span class="light-text">Review</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#properties">Properties</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="list-property.html" class="gold-text active" style="font-weight: 600;"><i class="fa-solid fa-plus"></i> List Property</a></li>
+                <!-- BUY Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="index.html#properties" class="dropdown-trigger">Buy <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html?type=Apartment#properties"><i class="fa-solid fa-building gold-text"></i> Buy Apartments / Flats</a>
+                        <a href="index.html?type=Villa#properties"><i class="fa-solid fa-house-chimney gold-text"></i> Buy Luxury Villas</a>
+                        <a href="index.html?type=Gated+Township#properties"><i class="fa-solid fa-mountain-city gold-text"></i> Buy Gated Townships</a>
+                        <a href="index.html?type=Commercial+Shop#properties"><i class="fa-solid fa-shop gold-text"></i> Buy Commercial Shops</a>
+                        <a href="index.html?type=Plot#properties"><i class="fa-solid fa-trowel-bricks gold-text"></i> Buy Plots / Land</a>
+                    </div>
+                </li>
+                
+                <!-- RENT Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="index.html#properties" class="dropdown-trigger">Rent <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html?purpose=Rent&type=Apartment#properties"><i class="fa-solid fa-building gold-text"></i> Rent Apartments / Flats</a>
+                        <a href="index.html?purpose=Rent&type=Villa#properties"><i class="fa-solid fa-house-chimney gold-text"></i> Rent Luxury Villas</a>
+                        <a href="index.html?purpose=Rent&type=Commercial+Shop#properties"><i class="fa-solid fa-shop gold-text"></i> Rent Commercial Shops</a>
+                    </div>
+                </li>
+                
+                <!-- RESEARCH & TOOLS Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-trigger">Research & Tools <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#" class="active-modal-trigger" data-modal="emi-modal"><i class="fa-solid fa-calculator gold-text"></i> EMI Calculator</a>
+                        <a href="#" class="active-modal-trigger" data-modal="eligibility-modal"><i class="fa-solid fa-hand-holding-dollar gold-text"></i> Eligibility Calculator</a>
+                        <a href="#" class="active-modal-trigger" data-modal="affordability-modal"><i class="fa-solid fa-piggy-bank gold-text"></i> Affordability Calculator</a>
+                        <a href="#" class="active-modal-trigger" data-modal="area-modal"><i class="fa-solid fa-vector-square gold-text"></i> Area Unit Converter</a>
+                        <a href="index.html#insights-section"><i class="fa-solid fa-chart-line gold-text"></i> Price Trends & Insights</a>
+                    </div>
+                </li>
+                
+                <!-- ADVISORY & HELP Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-trigger">Advisory & Help <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="blog.html"><i class="fa-solid fa-newspaper gold-text"></i> Expert Blogs & News</a>
+                        <a href="help.html"><i class="fa-solid fa-circle-question gold-text"></i> Visit Help Center</a>
+                        <a href="index.html#contact"><i class="fa-solid fa-headset gold-text"></i> Contact Advisory Team</a>
+                    </div>
+                </li>
+
+                <!-- Post Property Button (Active) -->
+                <li>
+                    <a href="list-property.html" class="nav-post-btn active" style="border-color: var(--accent-gold); background: var(--accent-gold); color: #000000;">
+                        <i class="fa-solid fa-plus"></i> Post Property <span class="free-badge-pulse" style="background: #000000; color: var(--accent-gold);">FREE</span>
+                    </a>
+                </li>
+                
                 <li id="auth-nav-item"><a href="#" id="open-signin-btn"><i class="fa-solid fa-user gold-text"></i> Sign In</a></li>
             </ul>
-            <a href="index.html#contact" class="btn btn-outline open-modal-btn">Contact Us</a>
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
@@ -47,56 +92,45 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
+    <!-- Why Post Free Section -->
+    <section class="pricing-section free-benefits-section">
         <div class="section-header reveal">
-            <span class="subtitle">Listing Plans</span>
-            <h2>Choose Your <span class="gold-text">Package</span></h2>
-            <p>Select the plan that best fits your needs, whether you're an individual owner, a broker, or a builder.</p>
+            <span class="subtitle">Post Property</span>
+            <h2>100% <span class="gold-text">Free Listing</span>. Zero Brokerage.</h2>
+            <p>Post your property for free and connect with thousands of premium buyers and tenants in Kota with zero hidden fees or agent commissions.</p>
         </div>
-        <div class="pricing-grid">
-            <!-- Basic Plan -->
-            <div class="pricing-card reveal">
-                <h3>Individual / Owner</h3>
-                <div class="price">₹999<span>/listing</span></div>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check gold-text"></i> 1 Active Listing</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Standard Visibility</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Up to 5 High-Res Photos</li>
-                    <li><i class="fa-solid fa-xmark text-muted"></i> Featured Tag</li>
-                    <li><i class="fa-solid fa-xmark text-muted"></i> Dedicated Support</li>
-                </ul>
-                <a href="#list-form-section" class="btn btn-outline">Select Plan</a>
+        <div class="free-benefits-grid">
+            <!-- Benefit 1 -->
+            <div class="benefit-card reveal">
+                <div class="benefit-icon"><i class="fa-solid fa-indian-rupee-sign gold-text"></i></div>
+                <h3>Zero Cost, Zero Brokerage</h3>
+                <p>Post completely free. Save thousands on real estate agent fees and direct advertising commissions.</p>
             </div>
 
-            <!-- Premium Plan -->
-            <div class="pricing-card premium reveal delay-1">
-                <div class="popular-badge">Most Popular</div>
-                <h3>Broker Plan</h3>
-                <div class="price">₹4,999<span>/month</span></div>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check gold-text"></i> Up to 10 Active Listings</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Priority Visibility</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Up to 15 Photos per Listing</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Featured Tag Included</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> WhatsApp Support</li>
-                </ul>
-                <a href="#list-form-section" class="btn btn-primary">Select Plan</a>
+            <!-- Benefit 2 -->
+            <div class="benefit-card reveal delay-1">
+                <div class="benefit-icon"><i class="fa-solid fa-users-viewfinder gold-text"></i></div>
+                <h3>Connect with Verified Leads</h3>
+                <p>Reach high-value buyers, corporate professionals, and families looking for luxury housing in Kota.</p>
             </div>
 
-            <!-- Enterprise Plan -->
-            <div class="pricing-card reveal delay-2">
-                <h3>Builder / Project</h3>
-                <div class="price">Custom<span>/project</span></div>
-                <ul class="plan-features">
-                    <li><i class="fa-solid fa-check gold-text"></i> Full Project Showcase</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Maximum Visibility</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Unlimited Photos & Videos</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Premium Homepage Placement</li>
-                    <li><i class="fa-solid fa-check gold-text"></i> Dedicated Account Manager</li>
-                </ul>
-                <a href="#list-form-section" class="btn btn-outline">Contact Sales</a>
+            <!-- Benefit 3 -->
+            <div class="benefit-card reveal delay-2">
+                <div class="benefit-icon"><i class="fa-solid fa-clock-rotate-left gold-text"></i></div>
+                <h3>Simple 5-Minute Posting</h3>
+                <p>Our easy submission form lets you fill in property details, upload photos, and go live instantly.</p>
             </div>
+
+            <!-- Benefit 4 -->
+            <div class="benefit-card reveal delay-3">
+                <div class="benefit-icon"><i class="fa-solid fa-comments gold-text"></i></div>
+                <h3>Direct Inquiries</h3>
+                <p>Receive call or WhatsApp inquiries directly from interested parties with zero intermediary delays.</p>
+            </div>
+        </div>
+        
+        <div class="free-posting-cta-row reveal" style="text-align: center; margin-top: 3.5rem;">
+            <a href="#list-form-section" class="btn btn-primary btn-lg" style="padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600; text-transform: uppercase; border-radius: var(--border-radius-sm);">Start Free Posting <i class="fa-solid fa-chevron-right" style="margin-left: 8px;"></i></a>
         </div>
     </section>
 
@@ -105,7 +139,7 @@
         <div class="inquiry-container reveal">
             <div class="section-header">
                 <h2>Submit Your <span class="gold-text">Listing</span></h2>
-                <p>Fill out the details below. We will review your submission and contact you for payment processing.</p>
+                <p>Fill out the details below. Submit your property details and your listing will go live instantly for FREE!</p>
             </div>
             
             <form class="inquiry-form" id="submit-listing-form">
@@ -219,6 +253,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 My Property Review. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;"><i class="fa-solid fa-palette gold-text"></i> Styled with Pantone Color of the Year 2026: <strong>Cloud Dancer</strong></p>
         </div>
     </footer>
 

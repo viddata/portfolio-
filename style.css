@@ -2,10 +2,10 @@
    VARIABLES & DESIGN SYSTEM
    ========================================= */
 :root {
-    /* Color Palette - Modern Luxury Light Mode */
-    --bg-dark: #faf9f6; /* Slate 50 / Warm luxury white */
-    --bg-darker: #f3f0e7; /* Slate 100 / Soft Alabaster contrast background */
-    --bg-card: #ffffff; /* Premium solid white card background */
+    /* Color Palette - Pantone Color of the Year 2026: Cloud Dancer (#F0EEE9) */
+    --bg-dark: #F0EEE9; /* PANTONE 11-4201 Cloud Dancer / Soft, lofty, and airy warm off-white */
+    --bg-darker: #E5E2DA; /* Lofty warm sand contrast background for sections */
+    --bg-card: #ffffff; /* Premium crisp solid white card background */
     
     --accent-gold: #b89733; /* Elegant Gold with high contrast readability on white */
     --accent-gold-hover: #a18228;
@@ -197,11 +197,14 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.25rem;
+    align-items: center;
 }
 
 .nav-links a {
@@ -2866,5 +2869,337 @@ img {
     box-sizing: border-box !important;
     color: var(--text-main) !important;
 }
+
+/* ==========================================
+   CLIENT-FRIENDLY MEGA-DROPDOWN NAVBAR STYLES
+   ========================================== */
+
+/* Dropdown Parent Link Wrapper */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.dropdown-trigger i {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+/* Glassmorphic Dropdown Menu Panel */
+.dropdown-content {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    min-width: 280px;
+    background: rgba(10, 10, 10, 0.98);
+    border: 1px solid var(--accent-gold);
+    border-radius: var(--border-radius-sm);
+    padding: 0.8rem 0;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+}
+
+/* Small upward pointing pointer */
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent var(--accent-gold) transparent;
+}
+
+/* Trigger Hover State (Desktop) */
+@media (min-width: 769px) {
+    .nav-dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+    
+    .nav-dropdown:hover .dropdown-trigger i {
+        transform: rotate(180deg);
+        color: var(--accent-gold);
+    }
+}
+
+/* Links inside Dropdown Content */
+.dropdown-content a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 1.4rem;
+    color: var(--text-main);
+    font-size: 0.92rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a i {
+    width: 16px;
+    text-align: center;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+/* Hover Sweep inside dropdown links */
+.dropdown-content a:hover {
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--accent-gold) !important;
+    padding-left: 1.8rem;
+}
+
+.dropdown-content a:hover i {
+    transform: scale(1.2);
+    color: #ffffff !important;
+}
+
+/* --- Deployed Post Property Action Button CTA --- */
+.nav-post-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--accent-gold);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--accent-gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nav-post-btn:hover, .nav-post-btn.active {
+    background: var(--accent-gold) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Pulsing FREE conversion badge */
+.free-badge-pulse {
+    background: #ffffff;
+    color: #000000;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    animation: pulseGlow 1.5s infinite;
+}
+
+.nav-post-btn:hover .free-badge-pulse {
+    background: #000000;
+    color: var(--accent-gold);
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+    }
+    70% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* ==========================================
+   POST PROPERTY FREE BENEFITS GRID STYLES
+   ========================================== */
+.free-benefits-section {
+    background: linear-gradient(180deg, var(--bg-darker) 0%, rgba(212, 175, 55, 0.02) 100%) !important;
+    padding-bottom: 5rem !important;
+}
+
+.free-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
+.benefit-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: 2.5rem 2rem;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.1);
+}
+
+.benefit-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.08);
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.benefit-icon i {
+    font-size: 1.8rem;
+    transition: var(--transition);
+}
+
+.benefit-card:hover .benefit-icon {
+    background: var(--accent-gold);
+}
+
+.benefit-card:hover .benefit-icon i {
+    transform: scale(1.1) rotate(6deg);
+    color: #000000 !important;
+}
+
+.benefit-card h3 {
+    font-family: var(--font-header);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.benefit-card p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   MOBILE ACCORDION NAVBAR STYLES
+   ========================================== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 0.5rem !important;
+        padding: 2rem 1.5rem !important;
+    }
+    
+    .nav-dropdown {
+        position: relative;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .dropdown-trigger {
+        width: 100%;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .dropdown-trigger i {
+        float: right;
+        font-size: 0.85rem;
+    }
+    
+    .dropdown-content {
+        position: static !important;
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        display: none; /* Managed by active-mobile-dropdown JS */
+        background: rgba(15, 15, 15, 0.95) !important;
+        border: none !important;
+        border-left: 2px solid var(--accent-gold) !important;
+        border-radius: 0 !important;
+        padding: 0.5rem 0 0.5rem 1.2rem !important;
+        box-shadow: none !important;
+        transform: none !important;
+        margin-top: 0.2rem;
+    }
+    
+    .dropdown-content::before {
+        display: none !important;
+    }
+    
+    .nav-dropdown.active-mobile-dropdown .dropdown-content {
+        display: block !important;
+    }
+    
+    .nav-dropdown.active-mobile-dropdown .dropdown-trigger i {
+        transform: rotate(180deg);
+        color: var(--accent-gold);
+    }
+    
+    .nav-post-btn {
+        width: 100%;
+        margin-top: 0.8rem;
+        justify-content: center;
+        padding: 0.8rem;
+    }
+}
+
 
 

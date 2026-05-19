@@ -24,14 +24,59 @@
                 <i class="fa-solid fa-city gold-text"></i> My Property <span class="light-text">Review</span>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#properties">Properties</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-                <li><a href="list-property.html" class="gold-text" style="font-weight: 600;"><i class="fa-solid fa-plus"></i> List Property</a></li>
+                <!-- BUY Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="index.html#properties" class="dropdown-trigger">Buy <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html?type=Apartment#properties"><i class="fa-solid fa-building gold-text"></i> Buy Apartments / Flats</a>
+                        <a href="index.html?type=Villa#properties"><i class="fa-solid fa-house-chimney gold-text"></i> Buy Luxury Villas</a>
+                        <a href="index.html?type=Gated+Township#properties"><i class="fa-solid fa-mountain-city gold-text"></i> Buy Gated Townships</a>
+                        <a href="index.html?type=Commercial+Shop#properties"><i class="fa-solid fa-shop gold-text"></i> Buy Commercial Shops</a>
+                        <a href="index.html?type=Plot#properties"><i class="fa-solid fa-trowel-bricks gold-text"></i> Buy Plots / Land</a>
+                    </div>
+                </li>
+                
+                <!-- RENT Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="index.html#properties" class="dropdown-trigger">Rent <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html?purpose=Rent&type=Apartment#properties"><i class="fa-solid fa-building gold-text"></i> Rent Apartments / Flats</a>
+                        <a href="index.html?purpose=Rent&type=Villa#properties"><i class="fa-solid fa-house-chimney gold-text"></i> Rent Luxury Villas</a>
+                        <a href="index.html?purpose=Rent&type=Commercial+Shop#properties"><i class="fa-solid fa-shop gold-text"></i> Rent Commercial Shops</a>
+                    </div>
+                </li>
+                
+                <!-- RESEARCH & TOOLS Dropdown -->
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-trigger">Research & Tools <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#" class="active-modal-trigger" data-modal="emi-modal"><i class="fa-solid fa-calculator gold-text"></i> EMI Calculator</a>
+                        <a href="#" class="active-modal-trigger" data-modal="eligibility-modal"><i class="fa-solid fa-hand-holding-dollar gold-text"></i> Eligibility Calculator</a>
+                        <a href="#" class="active-modal-trigger" data-modal="affordability-modal"><i class="fa-solid fa-piggy-bank gold-text"></i> Affordability Calculator</a>
+                        <a href="#" class="active-modal-trigger" data-modal="area-modal"><i class="fa-solid fa-vector-square gold-text"></i> Area Unit Converter</a>
+                        <a href="index.html#insights-section"><i class="fa-solid fa-chart-line gold-text"></i> Price Trends & Insights</a>
+                    </div>
+                </li>
+                
+                <!-- ADVISORY & HELP Dropdown (Active) -->
+                <li class="nav-dropdown">
+                    <a href="#" class="dropdown-trigger active" style="color: var(--accent-gold); font-weight: 600;">Advisory & Help <i class="fa-solid fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="blog.html" class="active"><i class="fa-solid fa-newspaper gold-text"></i> Expert Blogs & News</a>
+                        <a href="help.html"><i class="fa-solid fa-circle-question gold-text"></i> Visit Help Center</a>
+                        <a href="index.html#contact"><i class="fa-solid fa-headset gold-text"></i> Contact Advisory Team</a>
+                    </div>
+                </li>
+
+                <!-- Post Property Button -->
+                <li>
+                    <a href="list-property.html" class="nav-post-btn">
+                        <i class="fa-solid fa-plus"></i> Post Property <span class="free-badge-pulse">FREE</span>
+                    </a>
+                </li>
+                
                 <li id="auth-nav-item"><a href="#" id="open-signin-btn"><i class="fa-solid fa-user gold-text"></i> Sign In</a></li>
             </ul>
-            <a href="index.html#contact" class="btn btn-outline open-modal-btn">Contact Us</a>
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
@@ -172,6 +217,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 My Property Review. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 5px;"><i class="fa-solid fa-palette gold-text"></i> Styled with Pantone Color of the Year 2026: <strong>Cloud Dancer</strong></p>
         </div>
     </footer>
 

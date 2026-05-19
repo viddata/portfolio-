@@ -854,13 +854,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeCalcBtns = document.querySelectorAll('.close-calc-modal');
 
     calcTriggers.forEach(trigger => {
-        trigger.addEventListener('click', () => {
+        trigger.addEventListener('click', (e) => {
             const modalId = trigger.getAttribute('data-modal');
             const modal = document.getElementById(modalId);
             if (modal) {
+                e.preventDefault();
                 modal.classList.add('show');
                 // Auto trigger initial calculator math
                 triggerCalculatorMath(modalId);
+            } else {
+                // If the modal isn't on the current page (e.g. blog.html), redirect to index.html with param
+                e.preventDefault();
+                window.location.href = `index.html?openModal=${modalId}`;
+            }
+        });
+    });
+
+    // Auto open modal on load if query param is set (on index.html)
+    const urlParams = new URLSearchParams(window.location.search);
+    const openModalId = urlParams.get('openModal');
+    if (openModalId) {
+        // Delay slightly to let the page render
+        setTimeout(() => {
+            const modal = document.getElementById(openModalId);
+            if (modal) {
+                modal.classList.add('show');
+                triggerCalculatorMath(openModalId);
+                // Scroll to tools section
+                const toolsSection = document.getElementById('insights-section') || document.querySelector('.services-section');
+                if (toolsSection) {
+                    toolsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }, 400);
+    }
+
+    // Mobile Navigation Accordion Dropdowns
+    const mobileDropdownTriggers = document.querySelectorAll('.nav-dropdown .dropdown-trigger');
+    mobileDropdownTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                const parent = trigger.closest('.nav-dropdown');
+                const wasActive = parent.classList.contains('active-mobile-dropdown');
+                
+                // Collapse all accordions first
+                document.querySelectorAll('.nav-dropdown').forEach(item => {
+                    item.classList.remove('active-mobile-dropdown');
+                });
+                
+                if (!wasActive) {
+                    e.preventDefault();
+                    parent.classList.add('active-mobile-dropdown');
+                }
             }
         });
     });
