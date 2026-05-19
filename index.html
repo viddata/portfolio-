@@ -26,13 +26,13 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#properties">Properties</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="#about">About Us</a></li>
                 <li><a href="list-property.html" class="gold-text" style="font-weight: 600;"><i class="fa-solid fa-plus"></i> List Property</a></li>
                 <li id="auth-nav-item"><a href="#" id="open-signin-btn"><i class="fa-solid fa-user gold-text"></i> Sign In</a></li>
             </ul>
-            <a href="#" class="btn btn-outline open-modal-btn">Contact Us</a>
+            <a href="#contact" class="btn btn-outline open-modal-btn">Contact Us</a>
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fa-solid fa-bars"></i>
             </div>
@@ -41,47 +41,49 @@
 
     <!-- Hero Section -->
     <header class="hero" id="home">
-        <!-- Using the generated hero image -->
-        <div class="hero-bg" style="background-image: url('file:///C:/Users/Lenovo/.gemini/antigravity/brain/c138949b-e438-4219-856e-e52e96559c38/hero_real_estate_1779000919464.png');"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1 class="animate-up">Discover Your Next <span class="gold-text shimmer-gold">Luxury</span> Address</h1>
-            <p class="animate-up delay-1">Expert guidance for buying, selling, and renting premium real estate.</p>
-            
-            <!-- Search Glassmorphism Box -->
-            <div class="search-box animate-up delay-2">
-                <div class="search-tabs">
-                    <button class="tab-btn active" data-target="buy">Buy</button>
-                    <button class="tab-btn" data-target="rent">Rent</button>
-                    <button class="tab-btn" data-target="commercial">Commercial</button>
+        <div class="hero-grid-container">
+            <!-- Left Column: Slogan, Tabs, Search Bar, Property Owner Badge -->
+            <div class="hero-left-col reveal">
+                <span class="subtitle">Premium Property Advisor</span>
+                <h1>Discover Your Next <span class="gold-text shimmer-gold">Luxury</span> Address</h1>
+                <p class="hero-subtext">5K+ listings added daily and 76K+ total verified</p>
+                
+                <!-- Modern Search Container -->
+                <div class="search-box">
+                    <div class="search-tabs" id="hero-search-tabs">
+                        <button class="tab-btn active" data-target="buy">BUY</button>
+                        <button class="tab-btn" data-target="rent">RENT</button>
+                        <button class="tab-btn" data-target="commercial">COMMERCIAL</button>
+                        <button class="tab-btn" data-target="plots">PLOTS</button>
+                    </div>
+                    <div class="search-form">
+                        <div class="input-group">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="search-location" placeholder="Search for locality, landmark, project, or builder...">
+                        </div>
+                        <button class="btn btn-primary search-btn" id="filter-search-btn">Search</button>
+                    </div>
                 </div>
-                <div class="search-form">
-                    <div class="input-group">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <input type="text" id="search-location" placeholder="Enter City, Locality, or Project">
+                
+                <!-- Property Owner Badge -->
+                <div class="owner-badge-banner">
+                    <span>Are you a Property Owner? <a href="list-property.html" class="gold-text">Sell / Rent for FREE <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i></a></span>
+                </div>
+            </div>
+            
+            <!-- Right Column: 3D perspective villa screen card -->
+            <div class="hero-right-col reveal delay-1">
+                <div class="perspective-frame">
+                    <div class="perspective-card" style="background-image: url('file:///C:/Users/Lenovo/.gemini/antigravity/brain/c138949b-e438-4219-856e-e52e96559c38/villa_exterior_1779000935762.png');">
+                        <div class="card-glass-overlay">
+                            <div class="card-details">
+                                <span class="badge">Featured Address</span>
+                                <h3>Modern Hillside Duplex</h3>
+                                <p><i class="fa-solid fa-location-dot gold-text"></i> Balita Road, Kota</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="input-group select-group">
-                        <i class="fa-solid fa-house"></i>
-                        <select id="search-type">
-                            <option value="">Property Type</option>
-                            <option value="apartment">Apartment</option>
-                            <option value="villa">Villa</option>
-                            <option value="plot">Plot</option>
-                            <option value="commercial">Commercial</option>
-                        </select>
-                    </div>
-                    <div class="input-group select-group">
-                        <i class="fa-solid fa-tag"></i>
-                        <select id="search-budget">
-                            <option value="">Budget</option>
-                            <option value="1">Under ₹10 Lakh</option>
-                            <option value="2">₹10 Lakh - ₹20 Lakh</option>
-                            <option value="3">₹20 Lakh - ₹40 Lakh</option>
-                            <option value="4">₹40 Lakh - ₹75 Lakh</option>
-                            <option value="5">₹75 Lakh+</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-primary search-btn" id="filter-search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
                 </div>
             </div>
         </div>
@@ -183,6 +185,41 @@
         </div>
     </section>
 
+    <!-- Research and Insights Section -->
+    <section class="research-insights-section">
+        <div class="section-header reveal">
+            <span class="subtitle">Market Intelligence</span>
+            <h2>Research and <span class="gold-text">Insights</span></h2>
+            <p>Explore useful real estate insights and market intelligence report indexes.</p>
+        </div>
+        <div class="insights-grid">
+            <!-- Price Trends Card -->
+            <div class="insight-card reveal">
+                <div class="insight-art">
+                    <i class="fa-solid fa-chart-line gold-text"></i>
+                </div>
+                <h3>Price Trends <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i></h3>
+                <p>Find property rates & price trends of top locations and prime plots in Kota.</p>
+            </div>
+            <!-- City Insights Card -->
+            <div class="insight-card reveal delay-1">
+                <div class="insight-art">
+                    <i class="fa-solid fa-map-location-dot gold-text"></i>
+                </div>
+                <h3>City Insights <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i></h3>
+                <p>Get to know about the fastest growing locations and townships before you invest.</p>
+            </div>
+            <!-- Housing Research Card -->
+            <div class="insight-card reveal delay-2">
+                <div class="insight-art">
+                    <i class="fa-solid fa-folder-open gold-text"></i>
+                </div>
+                <h3>Housing Research <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i></h3>
+                <p>Find detailed research reports on the Rajasthan and national residential market cycles.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section class="about-section" id="about">
         <div class="about-container">
@@ -238,6 +275,116 @@
         </div>
     </section>
 
+    <!-- User Property Research Tools Section -->
+    <section class="research-tools-section">
+        <div class="section-header reveal">
+            <span class="subtitle">Financial Utilities</span>
+            <h2>User Property Research <span class="gold-text">Tools</span></h2>
+            <p>Calculate your borrowing power and understand your financial options in real-time.</p>
+        </div>
+        
+        <div class="carousel-container reveal">
+            <button class="carousel-nav-btn prev-btn" id="tools-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="tools-carousel-track">
+                    <!-- Card 1: EMI Calculator -->
+                    <div class="tool-card active-modal-trigger" data-modal="emi-modal">
+                        <div class="tool-icon-wrap"><i class="fa-solid fa-calculator gold-text"></i></div>
+                        <h3>EMI Calculator</h3>
+                        <p>Find your monthly EMI home loan payments with sliders.</p>
+                        <button class="btn-arrow-circle"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                    <!-- Card 2: Eligibility Calculator -->
+                    <div class="tool-card active-modal-trigger" data-modal="eligibility-modal">
+                        <div class="tool-icon-wrap"><i class="fa-solid fa-clipboard-check gold-text"></i></div>
+                        <h3>Eligibility Calculator</h3>
+                        <p>Find your maximum eligible home loan limit instantly.</p>
+                        <button class="btn-arrow-circle"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                    <!-- Card 3: Affordability Calculator -->
+                    <div class="tool-card active-modal-trigger" data-modal="affordability-modal">
+                        <div class="tool-icon-wrap"><i class="fa-solid fa-wallet gold-text"></i></div>
+                        <h3>Affordability Calculator</h3>
+                        <p>Find the best budget and savings for your home search.</p>
+                        <button class="btn-arrow-circle"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                    <!-- Card 4: Area Calculator -->
+                    <div class="tool-card active-modal-trigger" data-modal="area-modal">
+                        <div class="tool-icon-wrap"><i class="fa-solid fa-ruler-combined gold-text"></i></div>
+                        <h3>Area Converter</h3>
+                        <p>Interactive calculator for instant land area unit conversion.</p>
+                        <button class="btn-arrow-circle"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav-btn next-btn" id="tools-next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Have a Property to Sell Banner -->
+    <section class="sell-property-banner-section reveal">
+        <div class="sell-property-banner">
+            <div class="banner-house-illustration"></div>
+            <div class="banner-text-content">
+                <h2>List your property & connect with clients faster!</h2>
+                <p>Post your commercial, plot, apartment, or villa for FREE on Kota's elite property advisor portal.</p>
+            </div>
+            <div class="banner-action-col">
+                <a href="list-property.html" class="btn btn-outline-gold sell-property-btn">Sell your property</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News and Articles Carousel Section -->
+    <section class="news-articles-section">
+        <div class="news-articles-header reveal">
+            <div class="news-header-text">
+                <span class="subtitle">Latest News</span>
+                <h2>News and <span class="gold-text">Articles</span></h2>
+                <p>Read what's happening in Real Estate in Kota and major national hubs.</p>
+            </div>
+            <a href="blog.html" class="btn btn-outline-gold view-all-news-btn">See all news & articles <i class="fa-solid fa-chevron-right" style="font-size: 0.8rem;"></i></a>
+        </div>
+        
+        <div class="carousel-container reveal">
+            <button class="carousel-nav-btn prev-btn" id="news-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="news-carousel-track">
+                    <!-- Post 1 -->
+                    <div class="news-card" onclick="window.location.href='blog.html#post1'">
+                        <div class="news-card-img" style="background-image: url('file:///C:/Users/Lenovo/.gemini/antigravity/brain/c138949b-e438-4219-856e-e52e96559c38/hero_real_estate_1779000919464.png');">
+                            <span class="news-badge">Investments</span>
+                        </div>
+                        <div class="news-card-content">
+                            <h3>Floor space index and India's city skylines</h3>
+                            <p>Exploring high-yield residential locations, premium infrastructural connections, and appreciation guidelines...</p>
+                        </div>
+                    </div>
+                    <!-- Post 2 -->
+                    <div class="news-card" onclick="window.location.href='blog.html#post2'">
+                        <div class="news-card-img" style="background-image: url('file:///C:/Users/Lenovo/.gemini/antigravity/brain/c138949b-e438-4219-856e-e52e96559c38/hero_real_estate_1779000919464.png');">
+                            <span class="news-badge">Lifestyle</span>
+                        </div>
+                        <div class="news-card-content">
+                            <h3>Why Gated Townships are the Future</h3>
+                            <p>Why modern luxury buyers are prioritizing multi-tier smart security setups and exclusive clubhouse spaces...</p>
+                        </div>
+                    </div>
+                    <!-- Post 3 -->
+                    <div class="news-card" onclick="window.location.href='blog.html#post3'">
+                        <div class="news-card-img" style="background-image: url('file:///C:/Users/Lenovo/.gemini/antigravity/brain/c138949b-e438-4219-856e-e52e96559c38/hero_real_estate_1779000919464.png');">
+                            <span class="news-badge">Kota Growth</span>
+                        </div>
+                        <div class="news-card-content">
+                            <h3>Kota Real Estate: Balita Road Boom</h3>
+                            <p>Spotlighting Shree Kailashpuri, Balita Road as the next key residency destination and infrastructure corridor...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav-btn next-btn" id="news-next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
 
     <!-- Footer / Contact -->
     <footer class="footer" id="contact">
@@ -389,6 +536,281 @@
             <button type="button" class="btn btn-outline google-btn" id="google-login-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0.8rem; border-color: var(--glass-border); color: var(--text-main); font-weight: 500; font-size: 0.95rem; border-radius: var(--border-radius-sm); background: #ffffff; cursor: pointer; transition: var(--transition);">
                 <i class="fa-brands fa-google" style="color: #4285F4; font-size: 1.15rem;"></i> Continue with Google
             </button>
+        </div>
+    </div>
+
+    <!-- Slide-Out Profile Drawer (Housing.com style menu) -->
+    <div id="profile-drawer" class="profile-drawer">
+        <div class="drawer-overlay" id="profile-drawer-overlay"></div>
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h3>My Account</h3>
+                <span class="close-drawer" id="close-drawer-btn">&times;</span>
+            </div>
+            
+            <!-- User Info Card inside Drawer -->
+            <div class="drawer-user-info">
+                <div class="drawer-avatar"><i class="fa-solid fa-circle-user gold-text"></i></div>
+                <div class="drawer-user-details">
+                    <h4 id="drawer-username">Pradeep Kumar</h4>
+                    <p id="drawer-useremail">pradeep@mypropertyreview.com</p>
+                </div>
+            </div>
+            
+            <!-- Free Listing Banner (Image 2 yellow background) -->
+            <div class="drawer-free-listing-card">
+                <div class="card-house-bg"></div>
+                <h4>Looking to sell / rent your property?</h4>
+                <a href="list-property.html" class="btn btn-primary post-free-btn">Post property for FREE</a>
+            </div>
+            
+            <!-- Main drawer links list -->
+            <ul class="drawer-menu-links">
+                <li><a href="#"><i class="fa-solid fa-gem gold-text"></i> Zero Brokerage Properties</a></li>
+                <li><a href="#"><i class="fa-solid fa-credit-card gold-text"></i> My Transactions</a></li>
+                <li><a href="#"><i class="fa-solid fa-star gold-text"></i> My Reviews <span class="new-badge">NEW</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-bell gold-text"></i> Unsubscribe Alerts</a></li>
+                <li><a href="#"><i class="fa-solid fa-user-secret gold-text"></i> Report a Fraud</a></li>
+            </ul>
+            
+            <!-- Visit Help Center Outlined Button -->
+            <div class="drawer-help-center-btn">
+                <a href="help.html" class="btn btn-outline-gold visit-help-btn">
+                    <span><i class="fa-solid fa-circle-question gold-text"></i> Visit Help Center</span>
+                    <i class="fa-solid fa-chevron-right chevron-icon"></i>
+                </a>
+            </div>
+            
+            <!-- App Download Container (Image 2) -->
+            <div class="drawer-app-box">
+                <h5>Download My Property Review App</h5>
+                <div class="app-downloads-row">
+                    <div class="app-badge-col">
+                        <a href="#" class="app-badge-btn"><i class="fa-brands fa-apple"></i> App Store</a>
+                        <a href="#" class="app-badge-btn"><i class="fa-brands fa-google-play"></i> Google Play</a>
+                    </div>
+                    <!-- QR Code -->
+                    <div class="app-qr-code">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Follow and Logout -->
+            <div class="drawer-footer">
+                <div class="drawer-socials">
+                    <span>Follow on:</span>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1DDy9V1TkH/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/propertypradeep?igsh=MXdpMXpzMTRkcWJ5Zw==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline logout-drawer-btn" id="drawer-logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Modals -->
+    <!-- 1. EMI Calculator Modal -->
+    <div id="emi-modal" class="modal calculator-modal">
+        <div class="modal-content glass-calc-box">
+            <span class="close-calc-modal" data-close="emi-modal">&times;</span>
+            <div class="calc-header">
+                <h2><i class="fa-solid fa-calculator gold-text"></i> Home Loan <span class="gold-text">EMI Calculator</span></h2>
+                <p>Calculate your monthly home loan installment payments instantly.</p>
+            </div>
+            <div class="calc-body">
+                <div class="calc-inputs">
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="emi-amount">Loan Amount (₹)</label>
+                            <span class="slider-val" id="emi-amount-val">₹50,00,000</span>
+                        </div>
+                        <input type="range" id="emi-amount" min="500000" max="50000000" step="100000" value="5000000">
+                    </div>
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="emi-rate">Interest Rate (% p.a.)</label>
+                            <span class="slider-val" id="emi-rate-val">8.5%</span>
+                        </div>
+                        <input type="range" id="emi-rate" min="5" max="15" step="0.1" value="8.5">
+                    </div>
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="emi-tenure">Tenure (Years)</label>
+                            <span class="slider-val" id="emi-tenure-val">20 Years</span>
+                        </div>
+                        <input type="range" id="emi-tenure" min="5" max="30" step="1" value="20">
+                    </div>
+                </div>
+                <div class="calc-results">
+                    <div class="result-box">
+                        <span class="result-label">Monthly EMI Payment</span>
+                        <h2 class="result-value gold-text" id="emi-result-value">₹43,391</h2>
+                    </div>
+                    <div class="results-breakdown">
+                        <div class="breakdown-item">
+                            <span>Principal Loan</span>
+                            <span id="emi-principal-val">₹50,00,000</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Total Interest Payable</span>
+                            <span id="emi-interest-val">₹54,13,840</span>
+                        </div>
+                        <div class="breakdown-item" style="border-top: 1px solid var(--glass-border); padding-top: 0.5rem; font-weight: 600;">
+                            <span>Total Amount Payable</span>
+                            <span id="emi-total-val">₹1,04,13,840</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Eligibility Calculator Modal -->
+    <div id="eligibility-modal" class="modal calculator-modal">
+        <div class="modal-content glass-calc-box">
+            <span class="close-calc-modal" data-close="eligibility-modal">&times;</span>
+            <div class="calc-header">
+                <h2><i class="fa-solid fa-clipboard-check gold-text"></i> Home Loan <span class="gold-text">Eligibility Calculator</span></h2>
+                <p>Find out the maximum loan amount you are eligible for based on your net earnings.</p>
+            </div>
+            <div class="calc-body">
+                <div class="calc-inputs">
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="elig-income">Net Monthly Income (₹)</label>
+                            <span class="slider-val" id="elig-income-val">₹75,000/mo</span>
+                        </div>
+                        <input type="range" id="elig-income" min="10000" max="500000" step="5000" value="75000">
+                    </div>
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="elig-tenure">Tenure (Years)</label>
+                            <span class="slider-val" id="elig-tenure-val">20 Years</span>
+                        </div>
+                        <input type="range" id="elig-tenure" min="5" max="30" step="1" value="20">
+                    </div>
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="elig-emi">Existing Monthly EMIs (if any) (₹)</label>
+                            <span class="slider-val" id="elig-emi-val">₹0</span>
+                        </div>
+                        <input type="range" id="elig-emi" min="0" max="100000" step="2000" value="0">
+                    </div>
+                </div>
+                <div class="calc-results">
+                    <div class="result-box">
+                        <span class="result-label">Maximum Eligible Loan Amount</span>
+                        <h2 class="result-value gold-text" id="elig-result-value">₹43,20,000</h2>
+                    </div>
+                    <div class="results-breakdown">
+                        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; text-align: center;">Calculated using the FOIR (Fixed Obligation to Income Ratio) of 50%. Banks typically restrict total EMIs to 50% of your net monthly revenue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Affordability Calculator Modal -->
+    <div id="affordability-modal" class="modal calculator-modal">
+        <div class="modal-content glass-calc-box">
+            <span class="close-calc-modal" data-close="affordability-modal">&times;</span>
+            <div class="calc-header">
+                <h2><i class="fa-solid fa-wallet gold-text"></i> Property <span class="gold-text">Affordability Calculator</span></h2>
+                <p>Calculate the ideal purchase price budget for your home search based on your reserves.</p>
+            </div>
+            <div class="calc-body">
+                <div class="calc-inputs">
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="afford-savings">Liquid Savings / Down Payment (₹)</label>
+                            <span class="slider-val" id="afford-savings-val">₹10,00,000</span>
+                        </div>
+                        <input type="range" id="afford-savings" min="100000" max="10000000" step="50000" value="1000000">
+                    </div>
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="afford-income">Monthly Savings Dedicated to EMI (₹)</label>
+                            <span class="slider-val" id="afford-income-val">₹30,000/mo</span>
+                        </div>
+                        <input type="range" id="afford-income" min="5000" max="200000" step="2000" value="30000">
+                    </div>
+                    <div class="calc-slider-group">
+                        <div class="slider-header">
+                            <label for="afford-tenure">Home Loan Tenure (Years)</label>
+                            <span class="slider-val" id="afford-tenure-val">20 Years</span>
+                        </div>
+                        <input type="range" id="afford-tenure" min="5" max="30" step="1" value="20">
+                    </div>
+                </div>
+                <div class="calc-results">
+                    <div class="result-box">
+                        <span class="result-label">Maximum Property Budget</span>
+                        <h2 class="result-value gold-text" id="afford-result-value">₹44,56,800</h2>
+                    </div>
+                    <div class="results-breakdown">
+                        <div class="breakdown-item">
+                            <span>Down Payment Contribution</span>
+                            <span id="afford-down-val">₹10,00,000</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Expected Home Loan Component</span>
+                            <span id="afford-loan-val">₹34,56,800</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; margin-top: 1rem; text-align: center;">Assumes a standard bank lending rate of 8.5% p.a. covering up to 80% of the total asset valuation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Area Calculator Modal -->
+    <div id="area-modal" class="modal calculator-modal">
+        <div class="modal-content glass-calc-box" style="max-width: 600px;">
+            <span class="close-calc-modal" data-close="area-modal">&times;</span>
+            <div class="calc-header">
+                <h2><i class="fa-solid fa-ruler-combined gold-text"></i> Land Area <span class="gold-text">Converter Tool</span></h2>
+                <p>Convert real estate and agricultural land measurement units instantly.</p>
+            </div>
+            <div class="calc-body" style="flex-direction: column; gap: 2rem;">
+                <div style="display: flex; gap: 1rem; width: 100%;">
+                    <div class="form-group" style="flex: 1; display: flex; flex-direction: column; text-align: left; gap: 0.5rem;">
+                        <label for="area-input-val">Enter Area Value</label>
+                        <input type="number" id="area-input-val" value="100" style="padding: 0.8rem; background: var(--bg-dark); border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); color: var(--text-main); font-size: 1.1rem; outline: none;">
+                    </div>
+                    <div class="form-group" style="width: 150px; display: flex; flex-direction: column; text-align: left; gap: 0.5rem;">
+                        <label for="area-input-unit">From Unit</label>
+                        <select id="area-input-unit" style="padding: 0.8rem; background: var(--bg-dark); border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); color: var(--text-main); outline: none;">
+                            <option value="sqft">Sq. Feet</option>
+                            <option value="sqyd">Sq. Yards</option>
+                            <option value="gaj">Gaj</option>
+                            <option value="bigha">Bigha</option>
+                            <option value="marla">Marla</option>
+                            <option value="kanal">Kanal</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="results-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; width: 100%;">
+                    <div class="conv-box" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-dark); text-align: center;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Square Feet</span>
+                        <h3 class="gold-text" id="conv-sqft" style="margin-top: 0.5rem; font-size: 1.25rem;">100 sqft</h3>
+                    </div>
+                    <div class="conv-box" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-dark); text-align: center;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Square Yards / Gaj</span>
+                        <h3 class="gold-text" id="conv-sqyd" style="margin-top: 0.5rem; font-size: 1.25rem;">11.11 sqyd</h3>
+                    </div>
+                    <div class="conv-box" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-dark); text-align: center;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Marla (Rajasthan/North)</span>
+                        <h3 class="gold-text" id="conv-marla" style="margin-top: 0.5rem; font-size: 1.25rem;">0.36 Marla</h3>
+                    </div>
+                    <div class="conv-box" style="padding: 1rem; border: 1px solid var(--glass-border); border-radius: var(--border-radius-sm); background: var(--bg-dark); text-align: center;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Bigha (Standard)</span>
+                        <h3 class="gold-text" id="conv-bigha" style="margin-top: 0.5rem; font-size: 1.25rem;">0.0036 Bigha</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

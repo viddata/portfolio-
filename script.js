@@ -719,52 +719,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Update Auth State UI in Navbar
+    // Update Auth State UI in Navbar & Side Drawer
     function updateAuthUI() {
         const authNavItem = document.getElementById('auth-nav-item');
         if (!authNavItem) return;
         
         const loggedInUser = JSON.parse(localStorage.getItem('logged_in_user'));
+        const drawer = document.getElementById('profile-drawer');
+        const drawerUsername = document.getElementById('drawer-username');
+        const drawerUseremail = document.getElementById('drawer-useremail');
         
         if (loggedInUser) {
+            // Set premium profile avatar trigger in navbar
             authNavItem.innerHTML = `
-                <div class="user-profile-menu" style="position: relative; display: inline-block;">
-                    <a href="#" id="user-profile-trigger" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-family: var(--font-body);"><i class="fa-solid fa-circle-user gold-text" style="font-size: 1.15rem;"></i> Hi, ${loggedInUser.name} <i class="fa-solid fa-caret-down" style="font-size: 0.8rem; color: var(--accent-gold);"></i></a>
-                    <ul class="user-dropdown-list" id="user-dropdown-list">
-                        <li><a href="#" id="logout-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a></li>
-                    </ul>
+                <div class="user-profile-menu">
+                    <a href="#" id="user-profile-trigger" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-family: var(--font-body);">
+                        <i class="fa-solid fa-circle-user gold-text" style="font-size: 1.15rem;"></i> 
+                        Hi, ${loggedInUser.name.split(' ')[0]} 
+                        <i class="fa-solid fa-caret-down" style="font-size: 0.8rem; color: var(--accent-gold);"></i>
+                    </a>
                 </div>
             `;
             
-            // Trigger dropdown
+            // Sync side drawer details
+            if (drawerUsername) drawerUsername.innerText = loggedInUser.name;
+            if (drawerUseremail) drawerUseremail.innerText = loggedInUser.email || `${loggedInUser.name.toLowerCase().replace(/\s+/g, '')}@mypropertyreview.com`;
+            
+            // Wire trigger to open sliding drawer
             const trigger = document.getElementById('user-profile-trigger');
-            const dropdown = document.getElementById('user-dropdown-list');
-            if (trigger && dropdown) {
+            if (trigger && drawer) {
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    dropdown.classList.toggle('show');
-                });
-                
-                // Click outside close
-                window.addEventListener('click', () => {
-                    dropdown.classList.remove('show');
-                });
-            }
-            
-            // Logout click handler
-            const logoutBtn = document.getElementById('logout-btn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    localStorage.removeItem('logged_in_user');
-                    updateAuthUI();
+                    drawer.classList.add('show');
                 });
             }
         } else {
+            // Default logged out navbar item
             authNavItem.innerHTML = `<a href="#" id="open-signin-btn"><i class="fa-solid fa-user gold-text"></i> Sign In</a>`;
             
-            // Re-attach signin click handler
+            // Reset drawer state credentials
+            if (drawerUsername) drawerUsername.innerText = 'Pradeep Kumar';
+            if (drawerUseremail) drawerUseremail.innerText = 'pradeep@mypropertyreview.com';
+            
+            // Wire trigger to open signin modal
             const openBtn = document.getElementById('open-signin-btn');
             if (openBtn && signinModal) {
                 openBtn.addEventListener('click', (e) => {
@@ -774,6 +772,285 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }
+    }
+
+    // --- Profile Side Drawer Closing / Overlay Interaction ---
+    const drawer = document.getElementById('profile-drawer');
+    const closeDrawerBtn = document.getElementById('close-drawer-btn');
+    const drawerOverlay = document.getElementById('profile-drawer-overlay');
+    const drawerLogoutBtn = document.getElementById('drawer-logout-btn');
+
+    if (drawer) {
+        const closeProfileDrawer = () => {
+            drawer.classList.remove('show');
+        };
+
+        if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeProfileDrawer);
+        if (drawerOverlay) drawerOverlay.addEventListener('click', closeProfileDrawer);
+        
+        // Drawer Logout Trigger
+        if (drawerLogoutBtn) {
+            drawerLogoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('logged_in_user');
+                updateAuthUI();
+                closeProfileDrawer();
+            });
+        }
+    }
+
+    // --- Horizontal Sliding Carousels Logic ---
+    function setupCarousel(trackId, prevBtnId, nextBtnId, cardSelector) {
+        const track = document.getElementById(trackId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+        
+        if (!track || !prevBtn || !nextBtn) return;
+        
+        let scrollAmount = 0;
+        
+        const updateButtons = () => {
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            prevBtn.style.opacity = scrollAmount <= 0 ? '0.3' : '1';
+            nextBtn.style.opacity = scrollAmount >= maxScroll ? '0.3' : '1';
+        };
+        
+        nextBtn.addEventListener('click', () => {
+            const card = track.querySelector(cardSelector);
+            if (!card) return;
+            const cardWidth = card.clientWidth + parseFloat(getComputedStyle(track).gap || 0);
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            
+            scrollAmount = Math.min(scrollAmount + cardWidth * 1.5, maxScroll);
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+            updateButtons();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            const card = track.querySelector(cardSelector);
+            if (!card) return;
+            const cardWidth = card.clientWidth + parseFloat(getComputedStyle(track).gap || 0);
+            
+            scrollAmount = Math.max(scrollAmount - cardWidth * 1.5, 0);
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+            updateButtons();
+        });
+        
+        window.addEventListener('resize', () => {
+            scrollAmount = 0;
+            track.style.transform = `translateX(0px)`;
+            updateButtons();
+        });
+        
+        setTimeout(updateButtons, 500); // Wait for animations
+    }
+
+    // Initialize carousels
+    setupCarousel('tools-carousel-track', 'tools-prev-btn', 'tools-next-btn', '.tool-card');
+    setupCarousel('news-carousel-track', 'news-prev-btn', 'news-next-btn', '.news-card');
+
+    // --- Interactive Calculator Modals Logic ---
+    const calcTriggers = document.querySelectorAll('.active-modal-trigger');
+    const closeCalcBtns = document.querySelectorAll('.close-calc-modal');
+
+    calcTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const modalId = trigger.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('show');
+                // Auto trigger initial calculator math
+                triggerCalculatorMath(modalId);
+            }
+        });
+    });
+
+    closeCalcBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modalId = btn.getAttribute('data-close');
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('show');
+        });
+    });
+
+    // Close calculator modal on clicking outside content
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('calculator-modal')) {
+            e.target.classList.remove('show');
+        }
+    });
+
+    function triggerCalculatorMath(modalId) {
+        if (modalId === 'emi-modal') calculateEMI();
+        if (modalId === 'eligibility-modal') calculateEligibility();
+        if (modalId === 'affordability-modal') calculateAffordability();
+        if (modalId === 'area-modal') calculateArea();
+    }
+
+    // Helper: format currency in Rupee (INR) layout
+    function formatINR(number) {
+        return new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            maximumFractionDigits: 0
+        }).format(number);
+    }
+
+    // --- 1. EMI CALCULATOR MATH ---
+    const emiAmountSlider = document.getElementById('emi-amount');
+    const emiRateSlider = document.getElementById('emi-rate');
+    const emiTenureSlider = document.getElementById('emi-tenure');
+
+    function calculateEMI() {
+        if (!emiAmountSlider || !emiRateSlider || !emiTenureSlider) return;
+        
+        const P = parseFloat(emiAmountSlider.value);
+        const R = parseFloat(emiRateSlider.value) / 12 / 100;
+        const N = parseFloat(emiTenureSlider.value) * 12;
+        
+        // Update slider labels
+        document.getElementById('emi-amount-val').innerText = formatINR(P);
+        document.getElementById('emi-rate-val').innerText = emiRateSlider.value + '%';
+        document.getElementById('emi-tenure-val').innerText = emiTenureSlider.value + ' Years';
+        
+        // EMI formula
+        const emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+        const totalPayment = emi * N;
+        const totalInterest = totalPayment - P;
+        
+        document.getElementById('emi-result-value').innerText = formatINR(emi);
+        document.getElementById('emi-principal-val').innerText = formatINR(P);
+        document.getElementById('emi-interest-val').innerText = formatINR(totalInterest);
+        document.getElementById('emi-total-val').innerText = formatINR(totalPayment);
+    }
+
+    if (emiAmountSlider) {
+        emiAmountSlider.addEventListener('input', calculateEMI);
+        emiRateSlider.addEventListener('input', calculateEMI);
+        emiTenureSlider.addEventListener('input', calculateEMI);
+    }
+
+    // --- 2. ELIGIBILITY CALCULATOR MATH ---
+    const eligIncomeSlider = document.getElementById('elig-income');
+    const eligTenureSlider = document.getElementById('elig-tenure');
+    const eligEmiSlider = document.getElementById('elig-emi');
+
+    function calculateEligibility() {
+        if (!eligIncomeSlider || !eligTenureSlider || !eligEmiSlider) return;
+        
+        const monthlyIncome = parseFloat(eligIncomeSlider.value);
+        const tenureYears = parseFloat(eligTenureSlider.value);
+        const currentEMIs = parseFloat(eligEmiSlider.value);
+        
+        // Labels
+        document.getElementById('elig-income-val').innerText = formatINR(monthlyIncome) + '/mo';
+        document.getElementById('elig-tenure-val').innerText = tenureYears + ' Years';
+        document.getElementById('elig-emi-val').innerText = formatINR(currentEMIs);
+        
+        // Bank standard rules: FOIR limit = 50% of monthly income
+        const maxEmiCapacity = (monthlyIncome * 0.50) - currentEMIs;
+        
+        let eligibleLoan = 0;
+        if (maxEmiCapacity > 0) {
+            const annualInterest = 8.5; // Benchmark home loan rate
+            const R = (annualInterest / 12 / 100);
+            const N = tenureYears * 12;
+            
+            // Present Value of eligible loan
+            eligibleLoan = maxEmiCapacity * (Math.pow(1 + R, N) - 1) / (R * Math.pow(1 + R, N));
+            if (eligibleLoan < 0) eligibleLoan = 0;
+        }
+        
+        document.getElementById('elig-result-value').innerText = formatINR(eligibleLoan);
+    }
+
+    if (eligIncomeSlider) {
+        eligIncomeSlider.addEventListener('input', calculateEligibility);
+        eligTenureSlider.addEventListener('input', calculateEligibility);
+        eligEmiSlider.addEventListener('input', calculateEligibility);
+    }
+
+    // --- 3. AFFORDABILITY CALCULATOR MATH ---
+    const affordSavingsSlider = document.getElementById('afford-savings');
+    const affordIncomeSlider = document.getElementById('afford-income');
+    const affordTenureSlider = document.getElementById('afford-tenure');
+
+    function calculateAffordability() {
+        if (!affordSavingsSlider || !affordIncomeSlider || !affordTenureSlider) return;
+        
+        const savings = parseFloat(affordSavingsSlider.value);
+        const emiSavings = parseFloat(affordIncomeSlider.value);
+        const tenureYears = parseFloat(affordTenureSlider.value);
+        
+        // Labels
+        document.getElementById('afford-savings-val').innerText = formatINR(savings);
+        document.getElementById('afford-income-val').innerText = formatINR(emiSavings) + '/mo';
+        document.getElementById('afford-tenure-val').innerText = tenureYears + ' Years';
+        
+        // expected loan from emi contribution
+        const annualInterest = 8.5;
+        const R = (annualInterest / 12 / 100);
+        const N = tenureYears * 12;
+        const loanComponent = emiSavings * (Math.pow(1 + R, N) - 1) / (R * Math.pow(1 + R, N));
+        
+        const totalBudget = savings + loanComponent;
+        
+        document.getElementById('afford-result-value').innerText = formatINR(totalBudget);
+        document.getElementById('afford-down-val').innerText = formatINR(savings);
+        document.getElementById('afford-loan-val').innerText = formatINR(loanComponent);
+    }
+
+    if (affordSavingsSlider) {
+        affordSavingsSlider.addEventListener('input', calculateAffordability);
+        affordIncomeSlider.addEventListener('input', calculateAffordability);
+        affordTenureSlider.addEventListener('input', calculateAffordability);
+    }
+
+    // --- 4. AREA UNIT CONVERTER TOOL ---
+    const areaInputVal = document.getElementById('area-input-val');
+    const areaInputUnit = document.getElementById('area-input-unit');
+
+    function calculateArea() {
+        if (!areaInputVal || !areaInputUnit) return;
+        
+        const inputVal = parseFloat(areaInputVal.value) || 0;
+        const unit = areaInputUnit.value;
+        
+        // Convert input to sqft first
+        let sqftVal = 0;
+        switch(unit) {
+            case 'sqft':
+                sqftVal = inputVal;
+                break;
+            case 'sqyd':
+            case 'gaj':
+                sqftVal = inputVal * 9;
+                break;
+            case 'marla':
+                sqftVal = inputVal * 272.25;
+                break;
+            case 'kanal':
+                sqftVal = inputVal * 5445;
+                break;
+            case 'bigha':
+                sqftVal = inputVal * 27225;
+                break;
+        }
+        
+        // Convert from sqft to all other outputs
+        const sqyd = sqftVal / 9;
+        const marla = sqftVal / 272.25;
+        const bigha = sqftVal / 27225;
+        
+        document.getElementById('conv-sqft').innerText = sqftVal.toFixed(2) + ' Sq. Ft';
+        document.getElementById('conv-sqyd').innerText = sqyd.toFixed(2) + ' Sq. Yards / Gaj';
+        document.getElementById('conv-marla').innerText = marla.toFixed(4) + ' Marla';
+        document.getElementById('conv-bigha').innerText = bigha.toFixed(4) + ' Bigha';
+    }
+
+    if (areaInputVal) {
+        areaInputVal.addEventListener('input', calculateArea);
+        areaInputUnit.addEventListener('change', calculateArea);
     }
 
     // --- Collapsible Blog Article Logic ---
@@ -816,3 +1093,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial load auth UI check
     updateAuthUI();
 });
+
